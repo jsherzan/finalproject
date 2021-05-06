@@ -1,0 +1,32 @@
+﻿@model IEnumerable<FinalProject.Models.Lifters>
+
+
+@{
+    ViewData["Title"] = "Powerlifting Competition";
+}
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewLifter">
+    Add New Lifter
+</button>
+<ul class="list-group">
+    <li class="list-group-item active">
+        <div class="row">
+            <div class="col">Lifter</div>
+            <div class="col">Deadlift</div>
+            <div class="col">Squat</div>
+            <div class="col">Bench</div>
+        </div>
+    </li>
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">@Html.DisplayFor(modelItem => item.liftername)</div>
+                <div class="col">@Html.DisplayFor(modelItem => item.deadlift)</div>
+                <div class="col">@Html.DisplayFor(modelItem => item.squat)</div>
+                <div class="col">@Html.DisplayFor(modelItem => item.bench)</div>
+            </div>
+        </li>
+    }
+</ul>
+
+@{Html.RenderPartial("CreateDialog", new Lifters());}
